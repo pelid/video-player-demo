@@ -10,7 +10,7 @@
     </div>
   </div>
   
-  <div class="video-wrapper"></div>
+  <div class="js-video-wrapper"></div>
 
   <div class="footer">
     <button class="icon-button js-play-button">▶</button>
@@ -21,8 +21,8 @@
     <div class="play-bar">
       <div class="time-current">0:08:31</div>
       
-      <div class="rc-slider progress js-progress" style="display: flex;">
-        <div class="rc-slider-track" style="width: 5.65558%;"></div>
+      <div class="progress">
+        <div class="slider" style="width: 5.65558%;"></div>
         <div class="button-progress"></div>
       </div>
       <div class="time-duration">2:30:53</div>
@@ -43,33 +43,38 @@
       });
     const playerContainer = document.getElementById('{{player_id}}')
     
-    const wrapper = playerContainer.getElementsByClassName('video-wrapper')[0]
+    const wrapper = playerContainer.getElementsByClassName('js-video-wrapper')[0]
     player.attachToElement(wrapper);
-    const playButton = playerContainer.getElementsByClassName('js-play-button')[0];
-    const pauseButton = playerContainer.getElementsByClassName('js-pause-button')[0];
-    pauseButton.style.display = 'none';
 
-    playButton.addEventListener('click', ()=>{
+    $playerContainer = $(playerContainer);
+    const $playButton = $playerContainer.find('.js-play-button')
+    const $pauseButton = $playerContainer.find('.js-pause-button');
+
+    $playButton.click(()=>{
       player.play();
-    })
-    pauseButton.addEventListener('click', ()=>{
+    });
+    $pauseButton.click(()=>{
       player.pause();
-    })
+    });
+
+    // FIXME replace on event triggering on launch?
+    $playButton.attr("hidden", false);
+    $pauseButton.attr("hidden", true);
 
     player.on(Playable.ENGINE_STATES.PLAYING, ()=>{
-      playButton.style.display = 'none';
-      pauseButton.style.display = 'block';
+      $playButton.attr("hidden", true);
+      $pauseButton.attr("hidden", false);
     })
 
     player.on(Playable.ENGINE_STATES.PAUSED, ()=>{
-      playButton.style.display = 'block';
-      pauseButton.style.display = 'none';
+      $playButton.attr("hidden", false);
+      $pauseButton.attr("hidden", true);
     })
 
     player.on(Playable.ENGINE_STATES.ENDED, ()=>{
-      playButton.style.display = 'block';
-      pauseButton.style.display = 'none';
       player.reset();
+      $playButton.attr("hidden", false);
+      $pauseButton.attr("hidden", true);
     })
 
   });

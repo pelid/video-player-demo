@@ -88,6 +88,7 @@ body {
 .promo-player .play-bar .progress {
   height: 4px;
   background-color: rgba(255,255,255,.5);
+  display: flex;
   flex: 1;
   margin-left: 8px;
   margin-right: 8px;
@@ -116,9 +117,6 @@ body {
   transform: scale(1);
 }
 
-.rc-slider {
-  display: flex;
-}
 .rc-slider-track {
   z-index: 3;
   background-color: rgb(236, 23, 79);
