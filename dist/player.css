@@ -1,6 +1,16 @@
 body {
   background-color: #1a143b;
 }
+
+.promo-player {
+  display: flex;
+  flex-direction: column;
+}
+
+.promo-player .video-container{
+  flex-grow: 1;
+}
+
 .promo-player .header {
   padding: 16px 16px 32px;
   background-color: black;
@@ -117,7 +127,7 @@ body {
   transform: scale(1);
 }
 
-.rc-slider-track {
+.slider {
   z-index: 3;
   background-color: rgb(236, 23, 79);
 }
@@ -127,3 +137,6 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+video-container
+video-container

@@ -11,7 +11,7 @@
   
   <div class="centered-block" style="margin-top: 20px; margin-bottom: 50px;">
     
-      <div id="player-large" class="promo-player" style="width: 1200px;">
+      <div id="player-large" class="promo-player" style="width: 1200px; height: 680px;">
   <div class="header">
     <div>
       <div class="caption-inner">
@@ -23,7 +23,7 @@
     </div>
   </div>
   
-  <div class="js-video-wrapper"></div>
+  <div class="video-container js-video-container"></div>
 
   <div class="footer">
     <button class="icon-button js-play-button">▶</button>
@@ -48,15 +48,14 @@
   document.addEventListener('DOMContentLoaded', function() {
     var Playable = window.Playable;
     const player = Playable.create({
-        width: "1200",
-        height: "680",
+        fillAllSpace: true,
         src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
         hideOverlay: true,
         hideMainUI: true,
       });
     const playerContainer = document.getElementById('player-large')
     
-    const wrapper = playerContainer.getElementsByClassName('js-video-wrapper')[0]
+    const wrapper = playerContainer.getElementsByClassName('js-video-container')[0]
     player.attachToElement(wrapper);
 
     $playerContainer = $(playerContainer);
@@ -98,7 +97,7 @@
 
   <div class="centered-block" style="margin-top: 20px; margin-bottom: 50px;">
     
-      <div id="player-medium" class="promo-player" style="width: 800px;">
+      <div id="player-medium" class="promo-player" style="width: 800px; height: 450px;">
   <div class="header">
     <div>
       <div class="caption-inner">
@@ -110,7 +109,7 @@
     </div>
   </div>
   
-  <div class="js-video-wrapper"></div>
+  <div class="video-container js-video-container"></div>
 
   <div class="footer">
     <button class="icon-button js-play-button">▶</button>
@@ -135,15 +134,14 @@
   document.addEventListener('DOMContentLoaded', function() {
     var Playable = window.Playable;
     const player = Playable.create({
-        width: "800",
-        height: "450",
+        fillAllSpace: true,
         src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
         hideOverlay: true,
         hideMainUI: true,
       });
     const playerContainer = document.getElementById('player-medium')
     
-    const wrapper = playerContainer.getElementsByClassName('js-video-wrapper')[0]
+    const wrapper = playerContainer.getElementsByClassName('js-video-container')[0]
     player.attachToElement(wrapper);
 
     $playerContainer = $(playerContainer);
@@ -185,7 +183,7 @@
 
   <div class="centered-block" style="margin-top: 20px; margin-bottom: 50px;">
     
-      <div id="player-small" class="promo-player" style="width: 400px;">
+      <div id="player-small" class="promo-player" style="width: 400px; height: 230px;">
   <div class="header">
     <div>
       <div class="caption-inner">
@@ -197,7 +195,7 @@
     </div>
   </div>
   
-  <div class="js-video-wrapper"></div>
+  <div class="video-container js-video-container"></div>
 
   <div class="footer">
     <button class="icon-button js-play-button">▶</button>
@@ -222,15 +220,14 @@
   document.addEventListener('DOMContentLoaded', function() {
     var Playable = window.Playable;
     const player = Playable.create({
-        width: "400",
-        height: "230",
+        fillAllSpace: true,
         src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
         hideOverlay: true,
         hideMainUI: true,
       });
     const playerContainer = document.getElementById('player-small')
     
-    const wrapper = playerContainer.getElementsByClassName('js-video-wrapper')[0]
+    const wrapper = playerContainer.getElementsByClassName('js-video-container')[0]
     player.attachToElement(wrapper);
 
     $playerContainer = $(playerContainer);
@@ -269,7 +266,7 @@
     
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
 </body>
 </html>
