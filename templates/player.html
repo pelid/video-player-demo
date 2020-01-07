@@ -1,0 +1,81 @@
+<div id="{{player_id}}" class="promo-player" style="width: {{width_px}}px; height: {{height_px}}px;">
+  <div class="header">
+    <div>
+      <div class="caption-inner">
+        <a href="https://www.ivi.ru/watch/180036/description" class="title" target="_blank">
+          <span>Балканский рубеж</span>
+        </a>
+      </div>
+      <div class="description">2019, Россия, 16+</div>
+    </div>
+  </div>
+  
+  <div class="video-wrapper"></div>
+
+  <div class="footer">
+    <button class="icon-button js-play-button">▶</button>
+    <button class="icon-button js-pause-button">⏸</button>
+    <button class="icon-button js-volume-on-button">🔊</button>
+    <!-- <button class="icon-button js-volume-off-button">🔇</button> -->
+    
+    <div class="play-bar">
+      <div class="time-current">0:08:31</div>
+      
+      <div class="rc-slider progress js-progress">
+        <div class="rc-slider-rail"></div>
+        <div class="rc-slider-track" style="position: absolute; left: 0%; top: 0px; bottom: 0px; z-index: 3; background-color: rgb(236, 23, 79); width: 5.65558%;"></div>
+        <div class="rc-slider-step"></div>
+        <div class="play-progress" style="left: 5.65558%;">
+          <div class="button-progress"></div>
+        </div>
+        <div class="rc-slider-mark"></div>
+      </div>
+      <div class="time-duration">2:30:53</div>
+    </div>
+
+  </div>
+
+</div>
+<script>
+  (function(){
+    var Playable = window.Playable;
+    const player = Playable.create({
+        width: "{{width_px}}",
+        height: "{{height_px}}",
+        src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
+        hideOverlay: true,
+        hideMainUI: true,
+      });
+    const playerContainer = document.getElementById('{{player_id}}')
+    
+    const wrapper = playerContainer.getElementsByClassName('video-wrapper')[0]
+    player.attachToElement(wrapper);
+    const playButton = playerContainer.getElementsByClassName('js-play-button')[0];
+    const pauseButton = playerContainer.getElementsByClassName('js-pause-button')[0];
+    pauseButton.style.display = 'none';
+
+    playButton.addEventListener('click', ()=>{
+      player.play();
+    })
+    pauseButton.addEventListener('click', ()=>{
+      player.pause();
+    })
+
+    player.on(Playable.ENGINE_STATES.PLAYING, ()=>{
+      playButton.style.display = 'none';
+      pauseButton.style.display = 'block';
+    })
+
+    player.on(Playable.ENGINE_STATES.PAUSED, ()=>{
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+    })
+
+    player.on(Playable.ENGINE_STATES.ENDED, ()=>{
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+      player.reset();
+    })
+
+  })();
+</script>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=cyrillic" rel="stylesheet">
+</head>
+  
+
+<style type="text/css">
+  .promo-player {
+    position: relative;
+  }
+
+  .promo-player .header {
+    padding: 16px 16px 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .promo-player a.title{
+    color: #fff;
+    background-image: linear-gradient(to right,rgba(255,255,255,.3) 50%,rgba(255,255,255,.3) 100%);
+    background-position: 0 100%;
+    background-size: 1px 1px;
+    background-repeat: repeat-x;
+    text-decoration: none;
+  }
+  .promo-player .title>span {
+    font-size: 20px;
+    line-height: 24px;
+    white-space: nowrap;
+    font-weight: 700;
+    color: #fff;
+    font-family: Roboto,Arial,Helvetica,Helvetica Neue,FreeSans,sans-serif;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+  }
+  .promo-player .title>span:hover {
+    text-shadow: 0 0 12px rgba(255,255,255,.6);
+    transition: text-shadow .15s ease;
+  }
+
+  .promo-player .description {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+      margin-top: 4px;
+      font-family: Roboto,Arial,Helvetica,Helvetica Neue,FreeSans,sans-serif;
+      color: #fff;
+      text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+  }
+
+  .promo-player .footer {
+    height: 40px;
+    padding-top: 4px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 2;
+    display: flex;
+  }
+
+  .promo-player .footer .icon-button {
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 22px;
+    color: white;
+    min-width: 32px;
+    line-height: 28px;
+    text-align: center;
+    margin-right: 8px;
+    border: none;
+    background: transparent;
+  }
+
+  .promo-player .footer .icon-button:hover {
+    text-shadow: 0 0 6px #fff;
+  }
+
+  .promo-player .play-bar {
+    align-items: center;
+    line-height: 24px;
+    flex: 1;
+    display: flex;
+  }
+
+  .promo-player .time-current, 
+  .promo-player .time-duration {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+    font-family: Roboto;
+    cursor: default;
+  }
+
+  .promo-player .play-bar .progress {
+    position: relative;
+    height: 4px;
+    background-color: rgba(255,255,255,.5);
+    flex: 1;
+    margin-left: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  .promo-player .play-bar .button-progress{
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    margin: -10px -10px 0 0;
+
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+
+    transform: scale(0);
+    transition: transform .2s ease,-webkit-transform .2s ease,-o-transform .2s ease;
+
+    z-index: 10;
+  }
+
+  .promo-player .play-bar .progress .button-progress::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    left: 50%;
+    margin: -5px 0 0 -5px;
+    background-color: #f8104d;
+    transition-delay: .1s;
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+
+    transform: scale(0);
+    transition: transform .2s ease,-webkit-transform .2s ease,-o-transform .2s ease;
+  }
+
+  .promo-player .play-bar:hover .button-progress,
+  .promo-player .play-bar:hover .progress .button-progress::after {
+    transform: scale(1);
+  }
+
+  .promo-player .play-bar .play-progress{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+</style>
+
+<body>
+
+  <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
+  
+  <div style="text-align: center; margin-top: 20px; margin-bottom: 50px;">
+    <div style="display: inline-block;">
+      
+        <div id="player-large" class="promo-player" style="width: 1200px; height: 600px;">
+  <div class="header">
+    <div>
+      <div class="caption-inner">
+        <a href="https://www.ivi.ru/watch/180036/description" class="title" target="_blank">
+          <span>Балканский рубеж</span>
+        </a>
+      </div>
+      <div class="description">2019, Россия, 16+</div>
+    </div>
+  </div>
+  
+  <div class="video-wrapper"></div>
+
+  <div class="footer">
+    <button class="icon-button js-play-button">▶</button>
+    <button class="icon-button js-pause-button">⏸</button>
+    <button class="icon-button js-volume-on-button">🔊</button>
+    <!-- <button class="icon-button js-volume-off-button">🔇</button> -->
+    
+    <div class="play-bar">
+      <div class="time-current">0:08:31</div>
+      
+      <div class="rc-slider progress js-progress">
+        <div class="rc-slider-rail"></div>
+        <div class="rc-slider-track" style="position: absolute; left: 0%; top: 0px; bottom: 0px; z-index: 3; background-color: rgb(236, 23, 79); width: 5.65558%;"></div>
+        <div class="rc-slider-step"></div>
+        <div class="play-progress" style="left: 5.65558%;">
+          <div class="button-progress"></div>
+        </div>
+        <div class="rc-slider-mark"></div>
+      </div>
+      <div class="time-duration">2:30:53</div>
+    </div>
+
+  </div>
+
+</div>
+<script>
+  (function(){
+    var Playable = window.Playable;
+    const player = Playable.create({
+        width: "1200",
+        height: "600",
+        src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
+        hideOverlay: true,
+        hideMainUI: true,
+      });
+    const playerContainer = document.getElementById('player-large')
+    
+    const wrapper = playerContainer.getElementsByClassName('video-wrapper')[0]
+    player.attachToElement(wrapper);
+    const playButton = playerContainer.getElementsByClassName('js-play-button')[0];
+    const pauseButton = playerContainer.getElementsByClassName('js-pause-button')[0];
+    pauseButton.style.display = 'none';
+
+    playButton.addEventListener('click', ()=>{
+      player.play();
+    })
+    pauseButton.addEventListener('click', ()=>{
+      player.pause();
+    })
+
+    player.on(Playable.ENGINE_STATES.PLAYING, ()=>{
+      playButton.style.display = 'none';
+      pauseButton.style.display = 'block';
+    })
+
+    player.on(Playable.ENGINE_STATES.PAUSED, ()=>{
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+    })
+
+    player.on(Playable.ENGINE_STATES.ENDED, ()=>{
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+      player.reset();
+    })
+
+  })();
+</script>
+      
+    </div>
+  </div>
+
+
+  <div style="text-align: center; margin-top: 20px; margin-bottom: 50px;">
+    <div style="display: inline-block;">
+      
+        <div id="player-medium" class="promo-player" style="width: 800px; height: 450px;">
+  <div class="header">
+    <div>
+      <div class="caption-inner">
+        <a href="https://www.ivi.ru/watch/180036/description" class="title" target="_blank">
+          <span>Балканский рубеж</span>
+        </a>
+      </div>
+      <div class="description">2019, Россия, 16+</div>
+    </div>
+  </div>
+  
+  <div class="video-wrapper"></div>
+
+  <div class="footer">
+    <button class="icon-button js-play-button">▶</button>
+    <button class="icon-button js-pause-button">⏸</button>
+    <button class="icon-button js-volume-on-button">🔊</button>
+    <!-- <button class="icon-button js-volume-off-button">🔇</button> -->
+    
+    <div class="play-bar">
+      <div class="time-current">0:08:31</div>
+      
+      <div class="rc-slider progress js-progress">
+        <div class="rc-slider-rail"></div>
+        <div class="rc-slider-track" style="position: absolute; left: 0%; top: 0px; bottom: 0px; z-index: 3; background-color: rgb(236, 23, 79); width: 5.65558%;"></div>
+        <div class="rc-slider-step"></div>
+        <div class="play-progress" style="left: 5.65558%;">
+          <div class="button-progress"></div>
+        </div>
+        <div class="rc-slider-mark"></div>
+      </div>
+      <div class="time-duration">2:30:53</div>
+    </div>
+
+  </div>
+
+</div>
+<script>
+  (function(){
+    var Playable = window.Playable;
+    const player = Playable.create({
+        width: "800",
+        height: "450",
+        src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
+        hideOverlay: true,
+        hideMainUI: true,
+      });
+    const playerContainer = document.getElementById('player-medium')
+    
+    const wrapper = playerContainer.getElementsByClassName('video-wrapper')[0]
+    player.attachToElement(wrapper);
+    const playButton = playerContainer.getElementsByClassName('js-play-button')[0];
+    const pauseButton = playerContainer.getElementsByClassName('js-pause-button')[0];
+    pauseButton.style.display = 'none';
+
+    playButton.addEventListener('click', ()=>{
+      player.play();
+    })
+    pauseButton.addEventListener('click', ()=>{
+      player.pause();
+    })
+
+    player.on(Playable.ENGINE_STATES.PLAYING, ()=>{
+      playButton.style.display = 'none';
+      pauseButton.style.display = 'block';
+    })
+
+    player.on(Playable.ENGINE_STATES.PAUSED, ()=>{
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+    })
+
+    player.on(Playable.ENGINE_STATES.ENDED, ()=>{
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+      player.reset();
+    })
+
+  })();
+</script>
+      
+    </div>
+  </div>
+
+
+  <div style="text-align: center; margin-top: 20px; margin-bottom: 50px;">
+    <div style="display: inline-block;">
+      
+        <div id="player-small" class="promo-player" style="width: 400px; height: 300px;">
+  <div class="header">
+    <div>
+      <div class="caption-inner">
+        <a href="https://www.ivi.ru/watch/180036/description" class="title" target="_blank">
+          <span>Балканский рубеж</span>
+        </a>
+      </div>
+      <div class="description">2019, Россия, 16+</div>
+    </div>
+  </div>
+  
+  <div class="video-wrapper"></div>
+
+  <div class="footer">
+    <button class="icon-button js-play-button">▶</button>
+    <button class="icon-button js-pause-button">⏸</button>
+    <button class="icon-button js-volume-on-button">🔊</button>
+    <!-- <button class="icon-button js-volume-off-button">🔇</button> -->
+    
+    <div class="play-bar">
+      <div class="time-current">0:08:31</div>
+      
+      <div class="rc-slider progress js-progress">
+        <div class="rc-slider-rail"></div>
+        <div class="rc-slider-track" style="position: absolute; left: 0%; top: 0px; bottom: 0px; z-index: 3; background-color: rgb(236, 23, 79); width: 5.65558%;"></div>
+        <div class="rc-slider-step"></div>
+        <div class="play-progress" style="left: 5.65558%;">
+          <div class="button-progress"></div>
+        </div>
+        <div class="rc-slider-mark"></div>
+      </div>
+      <div class="time-duration">2:30:53</div>
+    </div>
+
+  </div>
+
+</div>
+<script>
+  (function(){
+    var Playable = window.Playable;
+    const player = Playable.create({
+        width: "400",
+        height: "300",
+        src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
+        hideOverlay: true,
+        hideMainUI: true,
+      });
+    const playerContainer = document.getElementById('player-small')
+    
+    const wrapper = playerContainer.getElementsByClassName('video-wrapper')[0]
+    player.attachToElement(wrapper);
+    const playButton = playerContainer.getElementsByClassName('js-play-button')[0];
+    const pauseButton = playerContainer.getElementsByClassName('js-pause-button')[0];
+    pauseButton.style.display = 'none';
+
+    playButton.addEventListener('click', ()=>{
+      player.play();
+    })
+    pauseButton.addEventListener('click', ()=>{
+      player.pause();
+    })
+
+    player.on(Playable.ENGINE_STATES.PLAYING, ()=>{
+      playButton.style.display = 'none';
+      pauseButton.style.display = 'block';
+    })
+
+    player.on(Playable.ENGINE_STATES.PAUSED, ()=>{
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+    })
+
+    player.on(Playable.ENGINE_STATES.ENDED, ()=>{
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+      player.reset();
+    })
+
+  })();
+</script>
+      
+    </div>
+  </div>
+
+</body>
+</html>
