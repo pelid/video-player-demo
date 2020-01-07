@@ -1,3 +1,7 @@
+# Video Player Demo
+
+Customized video player. [Check demo site](https://pelid.github.io/video-player-demo/dist/).
+
 ## Quickstart
 
 Install Python dependencies first:
