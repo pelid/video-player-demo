@@ -32,7 +32,7 @@
 
 </div>
 <script>
-  (function(){
+  document.addEventListener('DOMContentLoaded', function() {
     var Playable = window.Playable;
     const player = Playable.create({
         width: "{{width_px}}",
@@ -72,5 +72,5 @@
       player.reset();
     })
 
-  })();
+  });
 </script>
