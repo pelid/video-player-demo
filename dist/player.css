@@ -14,7 +14,6 @@ body {
 .promo-player .header {
   padding: 16px 16px 32px;
   background-color: black;
-  z-index: 2;
 }
 
 .promo-player a.title{
@@ -56,7 +55,6 @@ body {
   padding-left: 16px;
   padding-right: 16px;
   background-color: black;
-  z-index: 2;
   display: flex;
 }
 
@@ -137,6 +135,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-video-container
-video-container
