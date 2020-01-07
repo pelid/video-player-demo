@@ -14,10 +14,7 @@
 
   .promo-player .header {
     padding: 16px 16px 32px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    background-color: black;
     z-index: 2;
   }
 
@@ -59,11 +56,7 @@
     padding-bottom: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
+    background-color: black;
     z-index: 2;
     display: flex;
   }
@@ -171,7 +164,7 @@
   <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
   
   <div class="centered-block" style="margin-top: 20px; margin-bottom: 50px;">
-    {% with player_id='player-large', width_px=1200, height_px=600 %}
+    {% with player_id='player-large', width_px=1200, height_px=680 %}
       {% include 'player.html' %}
     {% endwith %}
   </div>
@@ -185,7 +178,7 @@
 
 
   <div class="centered-block" style="margin-top: 20px; margin-bottom: 50px;">
-    {% with player_id='player-small', width_px=400, height_px=300 %}
+    {% with player_id='player-small', width_px=400, height_px=230 %}
       {% include 'player.html' %}
     {% endwith %}
   </div>
