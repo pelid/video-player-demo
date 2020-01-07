@@ -1,4 +1,4 @@
-<div id="{{player_id}}" class="promo-player" style="width: {{width_px}}px;">
+<div id="{{player_id}}" class="promo-player" style="width: {{width}}; height: {{height}};">
   <div class="header">
     <div>
       <div class="caption-inner">
@@ -10,7 +10,7 @@
     </div>
   </div>
   
-  <div class="js-video-wrapper"></div>
+  <div class="video-container js-video-container"></div>
 
   <div class="footer">
     <button class="icon-button js-play-button">▶</button>
@@ -35,15 +35,14 @@
   document.addEventListener('DOMContentLoaded', function() {
     var Playable = window.Playable;
     const player = Playable.create({
-        width: "{{width_px}}",
-        height: "{{height_px}}",
+        fillAllSpace: true,
         src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
         hideOverlay: true,
         hideMainUI: true,
       });
     const playerContainer = document.getElementById('{{player_id}}')
     
-    const wrapper = playerContainer.getElementsByClassName('js-video-wrapper')[0]
+    const wrapper = playerContainer.getElementsByClassName('js-video-container')[0]
     player.attachToElement(wrapper);
 
     $playerContainer = $(playerContainer);
