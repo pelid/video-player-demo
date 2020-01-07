@@ -11,10 +11,6 @@
   body {
     background-color: #1a143b;
   }
-  .promo-player {
-    position: relative;
-  }
-
   .promo-player .header {
     padding: 16px 16px 32px;
     background-color: black;
@@ -100,7 +96,6 @@
   }
 
   .promo-player .play-bar .progress {
-    position: relative;
     height: 4px;
     background-color: rgba(255,255,255,.5);
     flex: 1;
@@ -110,48 +105,33 @@
   }
 
   .promo-player .play-bar .button-progress{
-    right: 0;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    margin: -10px -10px 0 0;
-
-    position: absolute;
-    top: 50%;
-    border-radius: 50%;
-
-    transform: scale(0);
-    transition: transform .2s ease,-webkit-transform .2s ease,-o-transform .2s ease;
-
-    z-index: 10;
-  }
-
-  .promo-player .play-bar .progress .button-progress::after {
-    content: '';
     width: 10px;
     height: 10px;
-    left: 50%;
-    margin: -5px 0 0 -5px;
     background-color: #f8104d;
-    transition-delay: .1s;
-    position: absolute;
-    top: 50%;
+
+    position: relative;
+    left: -10px;
+    top: -8px;
+    z-index: 4;
+
     border-radius: 50%;
+    border: 5px solid white;
 
     transform: scale(0);
     transition: transform .2s ease,-webkit-transform .2s ease,-o-transform .2s ease;
+    transition-delay: .1s;
   }
 
-  .promo-player .play-bar:hover .button-progress,
-  .promo-player .play-bar:hover .progress .button-progress::after {
+  .promo-player .play-bar:hover .button-progress{
     transform: scale(1);
   }
 
-  .promo-player .play-bar .play-progress{
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
+  .rc-slider {
+    display: flex;
+  }
+  .rc-slider-track {
+    z-index: 3;
+    background-color: rgb(236, 23, 79);
   }
 
   .centered-block {
@@ -159,6 +139,7 @@
     align-items: center;
     justify-content: center;
   }
+
 
 </style>
 
