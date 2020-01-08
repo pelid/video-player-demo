@@ -21,4 +21,5 @@ def render():
 server = Server()
 render()  # should always render on startup before any source changes happens
 server.watch('templates', render)
+server.watch('dist')
 server.serve(root='dist')

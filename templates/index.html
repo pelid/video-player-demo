@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  
+
   <div class="centered-block" style="margin-top: 20px; margin-bottom: 50px;">
     {% with player_id='player-large', width='1200px', height='850px' %}
       {% include 'player.html' %}
@@ -31,5 +31,13 @@
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
+  <script src="player.js"></script>
+
+<script type="text/javascript">
+  createPlayer({elementId: 'player-large'});
+  createPlayer({elementId: 'player-medium'});
+  createPlayer({elementId: 'player-small'});
+</script>
+
 </body>
 </html>

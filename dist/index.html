@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  
+
   <div class="centered-block" style="margin-top: 20px; margin-bottom: 50px;">
     
       <div id="player-large" class="promo-player" style="width: 1200px; height: 850px;">
@@ -22,75 +22,29 @@
       <div class="description">2019, Россия, 16+</div>
     </div>
   </div>
-  
+
   <div class="video-container js-video-container"></div>
 
   <div class="footer">
     <button class="icon-button js-play-button">▶</button>
     <button class="icon-button js-pause-button">⏸</button>
-    <button class="icon-button js-volume-on-button">🔊</button>
-    <!-- <button class="icon-button js-volume-off-button">🔇</button> -->
-    
+    <button class="icon-button js-volume-button">🔊</button>
+    <button class="icon-button js-mute-button">🔇</button>
+
     <div class="play-bar">
-      <div class="time-current">0:08:31</div>
-      
-      <div class="progress">
-        <div class="slider" style="width: 5.65558%;"></div>
+      <div class="time-current js-current-time"></div>
+
+      <div class="progress js-progress">
+        <div class="slider js-progress-slider" style="width: 5.65558%;"></div>
         <div class="button-progress"></div>
       </div>
-      <div class="time-duration">2:30:53</div>
+      <div class="time-duration js-duration"></div>
     </div>
 
+    <button class="icon-button js-fullscreen-button">🖵</button>
   </div>
 
 </div>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var Playable = window.Playable;
-    const player = Playable.create({
-        fillAllSpace: true,
-        src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
-        hideOverlay: true,
-        hideMainUI: true,
-      });
-    const playerContainer = document.getElementById('player-large')
-    
-    const wrapper = playerContainer.getElementsByClassName('js-video-container')[0]
-    player.attachToElement(wrapper);
-
-    $playerContainer = $(playerContainer);
-    const $playButton = $playerContainer.find('.js-play-button')
-    const $pauseButton = $playerContainer.find('.js-pause-button');
-
-    $playButton.click(()=>{
-      player.play();
-    });
-    $pauseButton.click(()=>{
-      player.pause();
-    });
-
-    // FIXME replace on event triggering on launch?
-    $playButton.attr("hidden", false);
-    $pauseButton.attr("hidden", true);
-
-    player.on(Playable.ENGINE_STATES.PLAYING, ()=>{
-      $playButton.attr("hidden", true);
-      $pauseButton.attr("hidden", false);
-    })
-
-    player.on(Playable.ENGINE_STATES.PAUSED, ()=>{
-      $playButton.attr("hidden", false);
-      $pauseButton.attr("hidden", true);
-    })
-
-    player.on(Playable.ENGINE_STATES.ENDED, ()=>{
-      player.reset();
-      $playButton.attr("hidden", false);
-      $pauseButton.attr("hidden", true);
-    })
-
-  });
-</script>
     
   </div>
 
@@ -108,75 +62,29 @@
       <div class="description">2019, Россия, 16+</div>
     </div>
   </div>
-  
+
   <div class="video-container js-video-container"></div>
 
   <div class="footer">
     <button class="icon-button js-play-button">▶</button>
     <button class="icon-button js-pause-button">⏸</button>
-    <button class="icon-button js-volume-on-button">🔊</button>
-    <!-- <button class="icon-button js-volume-off-button">🔇</button> -->
-    
+    <button class="icon-button js-volume-button">🔊</button>
+    <button class="icon-button js-mute-button">🔇</button>
+
     <div class="play-bar">
-      <div class="time-current">0:08:31</div>
-      
-      <div class="progress">
-        <div class="slider" style="width: 5.65558%;"></div>
+      <div class="time-current js-current-time"></div>
+
+      <div class="progress js-progress">
+        <div class="slider js-progress-slider" style="width: 5.65558%;"></div>
         <div class="button-progress"></div>
       </div>
-      <div class="time-duration">2:30:53</div>
+      <div class="time-duration js-duration"></div>
     </div>
 
+    <button class="icon-button js-fullscreen-button">🖵</button>
   </div>
 
 </div>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var Playable = window.Playable;
-    const player = Playable.create({
-        fillAllSpace: true,
-        src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
-        hideOverlay: true,
-        hideMainUI: true,
-      });
-    const playerContainer = document.getElementById('player-medium')
-    
-    const wrapper = playerContainer.getElementsByClassName('js-video-container')[0]
-    player.attachToElement(wrapper);
-
-    $playerContainer = $(playerContainer);
-    const $playButton = $playerContainer.find('.js-play-button')
-    const $pauseButton = $playerContainer.find('.js-pause-button');
-
-    $playButton.click(()=>{
-      player.play();
-    });
-    $pauseButton.click(()=>{
-      player.pause();
-    });
-
-    // FIXME replace on event triggering on launch?
-    $playButton.attr("hidden", false);
-    $pauseButton.attr("hidden", true);
-
-    player.on(Playable.ENGINE_STATES.PLAYING, ()=>{
-      $playButton.attr("hidden", true);
-      $pauseButton.attr("hidden", false);
-    })
-
-    player.on(Playable.ENGINE_STATES.PAUSED, ()=>{
-      $playButton.attr("hidden", false);
-      $pauseButton.attr("hidden", true);
-    })
-
-    player.on(Playable.ENGINE_STATES.ENDED, ()=>{
-      player.reset();
-      $playButton.attr("hidden", false);
-      $pauseButton.attr("hidden", true);
-    })
-
-  });
-</script>
     
   </div>
 
@@ -194,79 +102,41 @@
       <div class="description">2019, Россия, 16+</div>
     </div>
   </div>
-  
+
   <div class="video-container js-video-container"></div>
 
   <div class="footer">
     <button class="icon-button js-play-button">▶</button>
     <button class="icon-button js-pause-button">⏸</button>
-    <button class="icon-button js-volume-on-button">🔊</button>
-    <!-- <button class="icon-button js-volume-off-button">🔇</button> -->
-    
+    <button class="icon-button js-volume-button">🔊</button>
+    <button class="icon-button js-mute-button">🔇</button>
+
     <div class="play-bar">
-      <div class="time-current">0:08:31</div>
-      
-      <div class="progress">
-        <div class="slider" style="width: 5.65558%;"></div>
+      <div class="time-current js-current-time"></div>
+
+      <div class="progress js-progress">
+        <div class="slider js-progress-slider" style="width: 5.65558%;"></div>
         <div class="button-progress"></div>
       </div>
-      <div class="time-duration">2:30:53</div>
+      <div class="time-duration js-duration"></div>
     </div>
 
+    <button class="icon-button js-fullscreen-button">🖵</button>
   </div>
 
 </div>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var Playable = window.Playable;
-    const player = Playable.create({
-        fillAllSpace: true,
-        src: 'https://wixmp-01bd43eabd844aac9eab64f5.wixmp.com/videos/output/720p/Highest Peak.mp4',
-        hideOverlay: true,
-        hideMainUI: true,
-      });
-    const playerContainer = document.getElementById('player-small')
-    
-    const wrapper = playerContainer.getElementsByClassName('js-video-container')[0]
-    player.attachToElement(wrapper);
-
-    $playerContainer = $(playerContainer);
-    const $playButton = $playerContainer.find('.js-play-button')
-    const $pauseButton = $playerContainer.find('.js-pause-button');
-
-    $playButton.click(()=>{
-      player.play();
-    });
-    $pauseButton.click(()=>{
-      player.pause();
-    });
-
-    // FIXME replace on event triggering on launch?
-    $playButton.attr("hidden", false);
-    $pauseButton.attr("hidden", true);
-
-    player.on(Playable.ENGINE_STATES.PLAYING, ()=>{
-      $playButton.attr("hidden", true);
-      $pauseButton.attr("hidden", false);
-    })
-
-    player.on(Playable.ENGINE_STATES.PAUSED, ()=>{
-      $playButton.attr("hidden", false);
-      $pauseButton.attr("hidden", true);
-    })
-
-    player.on(Playable.ENGINE_STATES.ENDED, ()=>{
-      player.reset();
-      $playButton.attr("hidden", false);
-      $pauseButton.attr("hidden", true);
-    })
-
-  });
-</script>
     
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
+  <script src="player.js"></script>
+
+<script type="text/javascript">
+  createPlayer({elementId: 'player-large'});
+  createPlayer({elementId: 'player-medium'});
+  createPlayer({elementId: 'player-small'});
+</script>
+
 </body>
 </html>

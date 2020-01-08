@@ -70,6 +70,9 @@ body {
   border: none;
   background: transparent;
 }
+.promo-player .footer .icon-button:last-child {
+  margin-right: 0;
+}
 
 .promo-player .footer .icon-button:hover {
   text-shadow: 0 0 6px #fff;
@@ -77,12 +80,11 @@ body {
 
 .promo-player .play-bar {
   align-items: center;
-  line-height: 24px;
   flex: 1;
   display: flex;
 }
 
-.promo-player .time-current, 
+.promo-player .time-current,
 .promo-player .time-duration {
   font-size: 12px;
   line-height: 16px;
